@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AxelBase – Invisible Character Scanner</title>
+    <link rel="icon" href="../../AxelLab-Logo.ico" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+
+    
+		<link href="../../_app/immutable/assets/0.DnoW-LJb.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/4.DswK8Nuh.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.DohtstDM.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DO7aCGZg.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/B11iBTST.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BprRDstm.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/SOUIcd57.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.2rYPGWsu.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/B2lCha33.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Cvl-Y_JZ.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/D-ROwAFz.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.DGplH9Fm.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/mY7jRIjx.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BcujTAJF.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BQU-mAlj.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CMtxkcGM.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/4.D2EEKlUJ.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CRjuo5t4.js"><!--1tq17n3--><meta name="description" content="Learn about zero-width spaces, BOMs, and hidden Unicode characters that silently break code, enable spam, and corrupt clipboard content."/> <meta property="og:title" content="What Are Invisible Characters and Why They Matter"/> <meta property="og:description" content="Invisible Unicode characters like U+200B, U+200D, and U+FEFF are silent threats in code and chat. This tool detects and removes them instantly."/> <meta property="og:url" content="../../blog/posts/post1"/> <meta property="og:type" content="article"/> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="What Are Invisible Characters and Why They Matter"/> <meta name="twitter:description" content="Zero-width spaces, joiners, and BOMs can break your code and enable attacks. Learn how to detect and remove them instantly."/><!----><title>What Are Invisible Characters and Why They Matter | Invisible Scanner Blog</title>
+  </head>
+  <body data-bs-theme="light">
+    <div><!--[--><!--[--><!----><header class="navbar-fixed svelte-12qhfyh"><nav class="container custom-nav svelte-12qhfyh"><div class="nav-brand-group svelte-12qhfyh"><a href="../../" aria-label="Home" class="logo-link"><img src="../../AxelLab-Logo.ico" alt="Logo" class="navbar-logo svelte-12qhfyh"/></a> <a href="../../" class="brand-text svelte-12qhfyh">AxelBase</a></div> <div class="nav-right svelte-12qhfyh"><div class="bmac-wrapper svelte-12qhfyh"><button class="btn-bmac svelte-12qhfyh"><i class="bi bi-cup-hot-fill"></i> <span class="d-none d-md-inline ms-1">Buy me a coffee</span></button> <!--[!--><!--]--></div> <ul class="nav-links svelte-12qhfyh"><li><a href="../../" class="svelte-12qhfyh">Home</a></li> <li><a href="../../#about" class="svelte-12qhfyh">About</a></li> <li><a href="../../#how-to" class="svelte-12qhfyh">How to use</a></li> <li><a href="../../#faq" class="svelte-12qhfyh">FAQ</a></li> <li><a href="../../blog" class="svelte-12qhfyh">Blog</a></li></ul></div></nav></header> <!--[--><!----><div class="container py-5 post-layout svelte-1tq17n3"><div class="breadcrumbs svelte-1tq17n3"><a href="../../blog" class="svelte-1tq17n3">Blog</a> <span>/</span> <p>What Are Invisible Characters?</p></div> <article class="prose svelte-1tq17n3"><h1 class="svelte-1tq17n3">What Are Invisible Characters and Why They Matter</h1> <p class="post-meta svelte-1tq17n3">Published: November 24, 2025</p> <p>Invisible characters are Unicode code points that have <strong>no visible width or glyph</strong> but still exist in text. They include zero-width spaces, joiners, directional marks, and byte order marks (BOMs). While harmless in some contexts, they are frequently used maliciously or accidentally introduced via copy-paste.</p> <h2 class="svelte-1tq17n3">The Most Common Invisible Offenders</h2> <ul><li><code>U+200B</code> — Zero Width Space (ZWSP)</li> <li><code>U+200C</code> — Zero Width Non-Joiner (ZWNJ)</li> <li><code>U+200D</code> — Zero Width Joiner (ZWJ)</li> <li><code>U+FEFF</code> — Zero Width No-Break Space / BOM</li> <li><code>U+2060</code> — Word Joiner</li> <li><code>U+00A0</code> — Non-Breaking Space (often copied from web pages)</li></ul> <h2 class="svelte-1tq17n3">Real-World Damage</h2> <p>These characters cause real problems:</p> <ul><li>JSON fails to parse with “Unexpected token” errors</li> <li>Code looks correct but throws syntax errors</li> <li>Discord/Slack messages appear empty but trigger spam filters</li> <li>Clipboard poisoning attacks that spread invisible payloads</li> <li>Git diffs polluted with invisible changes</li></ul> <h2 class="svelte-1tq17n3">Why This Tool Was Built</h2> <p>Most online cleaners are slow, send your data to servers, or miss advanced Unicode ranges. This scanner runs 100% in your browser, detects everything instantly, and respects your privacy completely — as required by NFR-03 and NFR-06 in the SRS.</p> <h2 class="svelte-1tq17n3">FAQ</h2> <details class="svelte-1tq17n3"><summary class="svelte-1tq17n3">Can invisible characters be used in phishing?</summary> <p>Yes. Attackers use ZWJ/ZWNJ to create visually identical domain names or usernames (homograph attacks).</p></details> <details class="svelte-1tq17n3"><summary class="svelte-1tq17n3">Why not just use regex find/replace?</summary> <p>Most editors can’t display or select invisible characters reliably. This tool highlights them visually and removes them in one click.</p></details> <details class="svelte-1tq17n3"><summary class="svelte-1tq17n3">Is it safe to paste sensitive code?</summary> <p>Yes — nothing ever leaves your browser. No logs, no tracking, no backend.</p></details> <p class="italic-note svelte-1tq17n3">Protect your text. Scan everything. Stay invisible-character-free.</p></article></div><!----><!--]--> <footer class="footer-fixed svelte-12qhfyh"><div class="container d-flex justify-content-between align-items-center"><span class="copyright">© 2025 AxelBase Invisible Character Scanner</span> <div class="footer-links svelte-12qhfyh"><a href="../../privacy" class="svelte-12qhfyh">Privacy</a> <span class="sep svelte-12qhfyh">•</span> <a href="../../terms" class="svelte-12qhfyh">Terms</a></div></div></footer><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_15yywxe = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						assets: "/invisible-character-scanner"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.DohtstDM.js"),
+						import("../../_app/immutable/entry/app.2rYPGWsu.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

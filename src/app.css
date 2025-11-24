@@ -1,0 +1,171 @@
+/* src/app.css */
+
+:root {
+  --color-primary: #6D3F5B;
+  --color-primary-dark: #522f44;
+  --color-primary-light: #8e5a7a;
+  --color-accent: #ffcccc;
+  --color-text-dark: #333;
+  --color-bg-light: #fdfbfd;
+  --border-radius-bubbly: 20px;
+  --border-radius-pill: 50px;
+  --shadow-soft: 0 10px 25px -5px rgba(109, 63, 91, 0.15), 0 8px 10px -6px rgba(109, 63, 91, 0.1);
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
+  /* Padding for fixed header and footer */
+  padding-top: 80px; 
+  padding-bottom: 60px; 
+}
+
+/* --- Typography & Headings --- */
+h1, h2, h3, h4, h5 {
+  color: var(--color-primary);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* --- Bubbly Card Styling --- */
+.card {
+  border: none;
+  border-radius: var(--border-radius-bubbly);
+  box-shadow: var(--shadow-soft);
+  background: white;
+  transition: var(--transition-smooth);
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 25px -5px rgba(109, 63, 91, 0.2);
+}
+
+.card-header {
+  background-color: white;
+  border-bottom: 2px solid #f0f0f0;
+  font-weight: 700;
+  color: var(--color-primary);
+  padding: 1rem 1.5rem;
+}
+
+/* --- Custom Inputs & Textareas --- */
+textarea#input, 
+.form-control {
+  border-radius: var(--border-radius-bubbly);
+  border: 2px solid #eee;
+  padding: 1rem;
+  transition: var(--transition-smooth);
+}
+
+textarea#input:focus, 
+.form-control:focus {
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 4px rgba(109, 63, 91, 0.1);
+  outline: none;
+}
+
+textarea#input {
+  font-family: 'Courier New', Consolas, monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+/* --- Bubbly Buttons --- */
+.btn {
+  border-radius: var(--border-radius-pill);
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  border: none;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Override Bootstrap Colors */
+.btn-primary, .btn-outline-primary:hover {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+}
+
+.btn-outline-primary {
+  color: var(--color-primary) !important;
+  border: 2px solid var(--color-primary) !important;
+  background: transparent;
+}
+
+.btn-danger {
+  background-color: #ff6b6b;
+}
+.btn-success {
+  background-color: #51cf66;
+}
+
+/* --- Highlighting Logic (Functional) --- */
+.invisible-char {
+  background-color: var(--color-accent) !important;
+  color: #d00 !important;
+  border-radius: 4px;
+  padding: 0 2px;
+  position: relative;
+  white-space: pre;
+  unicode-bidi: isolate;
+  box-shadow: 0 0 0 1px #ff9999;
+}
+
+.invisible-char::after {
+  content: attr(data-symbol);
+  font-family: system-ui;
+  font-size: 0.65rem;
+  font-weight: bold;
+  color: #900;
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* --- Badges --- */
+.badge {
+  border-radius: var(--border-radius-pill);
+  padding: 0.5em 0.8em;
+}
+.bg-danger { background-color: #ff6b6b !important; }
+
+/* --- Scrollbar Styling --- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-light); 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary); 
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

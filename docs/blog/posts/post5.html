@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AxelBase – Invisible Character Scanner</title>
+    <link rel="icon" href="../../AxelLab-Logo.ico" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+
+    
+		<link href="../../_app/immutable/assets/0.DnoW-LJb.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/8.Op404MYv.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.DohtstDM.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DO7aCGZg.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/B11iBTST.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BprRDstm.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/SOUIcd57.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.2rYPGWsu.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/B2lCha33.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Cvl-Y_JZ.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/D-ROwAFz.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.DGplH9Fm.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/mY7jRIjx.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BcujTAJF.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BQU-mAlj.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CMtxkcGM.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/8.k6DzzSen.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BIZYsT9B.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CRjuo5t4.js"><!--1li990r--><meta name="description" content="How we built a fully client-side SvelteKit app that works perfectly under GitHub Pages project sites with zero backend."/> <meta property="og:title" content="Deploying a 100% Static Privacy-First Tool on GitHub Pages"/> <meta property="og:description" content="Learn how @sveltejs/adapter-static + correct base path handling delivers a lightning-fast, private tool to millions."/> <meta property="og:url" content="../../blog/posts/post5"/> <meta property="og:type" content="article"/> <meta name="twitter:card" content="summary_large_image"/><!----><title>Deploying a 100% Static Privacy-First Tool on GitHub Pages</title>
+  </head>
+  <body data-bs-theme="light">
+    <div><!--[--><!--[--><!----><header class="navbar-fixed svelte-12qhfyh"><nav class="container custom-nav svelte-12qhfyh"><div class="nav-brand-group svelte-12qhfyh"><a href="../../" aria-label="Home" class="logo-link"><img src="../../AxelLab-Logo.ico" alt="Logo" class="navbar-logo svelte-12qhfyh"/></a> <a href="../../" class="brand-text svelte-12qhfyh">AxelBase</a></div> <div class="nav-right svelte-12qhfyh"><div class="bmac-wrapper svelte-12qhfyh"><button class="btn-bmac svelte-12qhfyh"><i class="bi bi-cup-hot-fill"></i> <span class="d-none d-md-inline ms-1">Buy me a coffee</span></button> <!--[!--><!--]--></div> <ul class="nav-links svelte-12qhfyh"><li><a href="../../" class="svelte-12qhfyh">Home</a></li> <li><a href="../../#about" class="svelte-12qhfyh">About</a></li> <li><a href="../../#how-to" class="svelte-12qhfyh">How to use</a></li> <li><a href="../../#faq" class="svelte-12qhfyh">FAQ</a></li> <li><a href="../../blog" class="svelte-12qhfyh">Blog</a></li></ul></div></nav></header> <!--[--><!----><div class="container py-5 post-layout svelte-1li990r"><div class="breadcrumbs svelte-1li990r"><a href="../../blog" class="svelte-1li990r">Blog</a> <span>/</span> <p>GitHub Pages Deployment</p></div> <article class="prose svelte-1li990r"><h1 class="svelte-1li990r">Deploying a 100% Static Privacy-First Tool on GitHub Pages</h1> <p class="post-meta svelte-1li990r">Published: November 24, 2025</p> <p>This entire scanner runs with <strong>zero backend</strong> — and that’s by design (NFR-03). Here’s how we made it work flawlessly on GitHub Pages project sites.</p> <h2 class="svelte-1li990r">The Challenge</h2> <p>GitHub Pages project sites live at <code>username.github.io/repo-name/</code>. Most S chutMost SvelteKit apps break unless configured correctly.</p> <h2 class="svelte-1li990r">Solution: adapter-static + Dynamic base Path</h2> <p>In <code>svelte.config.js</code>:</p> <pre><code><!---->paths: { base: process.env.NODE_ENV === 'production' ? '/invisible-character-scanner' : '' }<!----></code></pre> <p>And <code>adapter-static</code> with <code>pages: 'docs'</code> → GitHub Pages reads the <code>docs</code> folder automatically.</p> <h2 class="svelte-1li990r">Result</h2> <ul><li>Final build &lt; 180 KB gzipped (NFR-03)</li> <li>No 404s on refresh (prerendered routes)</li> <li>All assets load correctly under subpath (FR-10)</li> <li>Works offline with Service Worker potential</li></ul> <h2 class="svelte-1li990r">Why This Matters</h2> <p>No backend = no logs, no tracking, no data leaks. Your pasted code, chat logs, or API keys never leave your device — ever.</p> <p class="italic-note svelte-1li990r">True privacy isn’t a feature. It’s the foundation.</p></article></div><!----><!--]--> <footer class="footer-fixed svelte-12qhfyh"><div class="container d-flex justify-content-between align-items-center"><span class="copyright">© 2025 AxelBase Invisible Character Scanner</span> <div class="footer-links svelte-12qhfyh"><a href="../../privacy" class="svelte-12qhfyh">Privacy</a> <span class="sep svelte-12qhfyh">•</span> <a href="../../terms" class="svelte-12qhfyh">Terms</a></div></div></footer><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_15yywxe = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						assets: "/invisible-character-scanner"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.DohtstDM.js"),
+						import("../../_app/immutable/entry/app.2rYPGWsu.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 8],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

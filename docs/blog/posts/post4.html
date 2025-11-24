@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AxelBase – Invisible Character Scanner</title>
+    <link rel="icon" href="../../AxelLab-Logo.ico" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+
+    
+		<link href="../../_app/immutable/assets/0.DnoW-LJb.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/7.D2y2Q6en.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.DohtstDM.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DO7aCGZg.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/B11iBTST.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BprRDstm.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/SOUIcd57.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.2rYPGWsu.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/B2lCha33.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Cvl-Y_JZ.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/D-ROwAFz.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.DGplH9Fm.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/mY7jRIjx.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BcujTAJF.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BQU-mAlj.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CMtxkcGM.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/7.DMFGIkVq.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CRjuo5t4.js"><!--led0iy--><meta name="description" content="Deep dive into Unicode general categories Control (Cc), Format (Cf), Separator (Zs), and custom zero-width ranges — and why we let you toggle them."/> <meta property="og:title" content="Unicode Categories Explained: Cc, Cf, Zs &amp; Zero-Width Explained"/> <meta property="og:description" content="Understand the exact Unicode categories behind invisible characters and why fine-grained control matters for developers and moderators."/> <meta property="og:url" content="../../blog/posts/post4"/> <meta property="og:type" content="article"/> <meta name="twitter:card" content="summary_large_image"/><!----><title>Unicode Categories Explained: Cc, Cf, Zs &amp; Zero-Width | Invisible Scanner Blog</title>
+  </head>
+  <body data-bs-theme="light">
+    <div><!--[--><!--[--><!----><header class="navbar-fixed svelte-12qhfyh"><nav class="container custom-nav svelte-12qhfyh"><div class="nav-brand-group svelte-12qhfyh"><a href="../../" aria-label="Home" class="logo-link"><img src="../../AxelLab-Logo.ico" alt="Logo" class="navbar-logo svelte-12qhfyh"/></a> <a href="../../" class="brand-text svelte-12qhfyh">AxelBase</a></div> <div class="nav-right svelte-12qhfyh"><div class="bmac-wrapper svelte-12qhfyh"><button class="btn-bmac svelte-12qhfyh"><i class="bi bi-cup-hot-fill"></i> <span class="d-none d-md-inline ms-1">Buy me a coffee</span></button> <!--[!--><!--]--></div> <ul class="nav-links svelte-12qhfyh"><li><a href="../../" class="svelte-12qhfyh">Home</a></li> <li><a href="../../#about" class="svelte-12qhfyh">About</a></li> <li><a href="../../#how-to" class="svelte-12qhfyh">How to use</a></li> <li><a href="../../#faq" class="svelte-12qhfyh">FAQ</a></li> <li><a href="../../blog" class="svelte-12qhfyh">Blog</a></li></ul></div></nav></header> <!--[--><!----><div class="container py-5 post-layout svelte-led0iy"><div class="breadcrumbs svelte-led0iy"><a href="../../blog" class="svelte-led0iy">Blog</a> <span>/</span> <p>Unicode Categories Explained</p></div> <article class="prose svelte-led0iy"><h1 class="svelte-led0iy">Unicode Categories Explained: Cc, Cf, Zs, and Zero-Width Ranges</h1> <p class="post-meta svelte-led0iy">Published: November 24, 2025</p> <p>The Invisible Character Scanner gives you precise control over four Unicode detection groups. Here’s exactly what each means — and why it matters.</p> <h2 class="svelte-led0iy">Cc — Control Characters</h2> <p>Includes ASCII control codes like <code>U+0007</code> (bell), <code>U+0009</code> (tab), <code>U+000D</code> (carriage return). Often leftover from old systems or malicious payloads.</p> <h2 class="svelte-led0iy">Cf — Format Controls</h2> <p>The most dangerous group. Includes:</p> <ul><li><code>U+200C</code> Zero Width Non-Joiner (ZWNJ)</li> <li><code>U+200D</code> Zero Width Joiner (ZWJ)</li> <li><code>U+200E/U+200F</code> Directional marks</li> <li><code>U+2060–U+2069</code> Invisible math operators</li></ul> <p>Used in emoji sequences, homograph attacks, and bidirectional text exploits.</p> <h2 class="svelte-led0iy">Zs — Space Separators</h2> <p>All space-like characters except regular space <code>U+0020</code>. Includes:</p> <ul><li><code>U+00A0</code> Non-breaking space (common in web copy)</li> <li><code>U+2000–U+200A</code> En/em spaces</li> <li><code>U+202F</code> Narrow no-break space</li></ul> <h2 class="svelte-led0iy">Custom Zero-Width Range</h2> <p>We manually target the most abused zero-width block: <code>U+200B–U+200F</code>, <code>U+2060–U+2069</code>, <code>U+FEFF</code>, plus <code>U+061C</code> and <code>U+180E</code> — known for spam and clipboard attacks.</p> <h2 class="svelte-led0iy">Why Toggle Controls Matter (FR-08)</h2> <p>Sometimes you <em>want</em> certain characters:</p> <ul><li>Arabic/Persian text needs ZWNJ</li> <li>Designers use non-breaking spaces intentionally</li> <li>Emoji sequences rely on ZWJ</li></ul> <p>That’s why the Advanced panel lets you disable any category without breaking legitimate content.</p> <h2 class="svelte-led0iy">FAQ</h2> <details class="svelte-led0iy"><summary class="svelte-led0iy">Should I always enable all categories?</summary> <p>For maximum safety: yes. For multilingual publishing: disable Cf/Zs as needed.</p></details> <details class="svelte-led0iy"><summary class="svelte-led0iy">Why not just block everything?</summary> <p>Because legitimate use cases exist. We give you surgical control instead of a sledgehammer.</p></details> <p class="italic-note svelte-led0iy">Precision over panic. Detect what matters — ignore what doesn’t.</p></article></div><!----><!--]--> <footer class="footer-fixed svelte-12qhfyh"><div class="container d-flex justify-content-between align-items-center"><span class="copyright">© 2025 AxelBase Invisible Character Scanner</span> <div class="footer-links svelte-12qhfyh"><a href="../../privacy" class="svelte-12qhfyh">Privacy</a> <span class="sep svelte-12qhfyh">•</span> <a href="../../terms" class="svelte-12qhfyh">Terms</a></div></div></footer><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_15yywxe = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						assets: "/invisible-character-scanner"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.DohtstDM.js"),
+						import("../../_app/immutable/entry/app.2rYPGWsu.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 7],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
