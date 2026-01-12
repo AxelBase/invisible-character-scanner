@@ -1,4 +1,4 @@
 User-agent: *
-Disallow:
+Allow: /
 
-Sitemap: https://https://axelbase.github.io/arn-parser/sitemap.xml
+Sitemap: https://invisible-character-scanner.vercel.app/sitemap.xml

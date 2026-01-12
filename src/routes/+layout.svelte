@@ -3,20 +3,20 @@
   import { base } from '$app/paths';
   import { fly } from 'svelte/transition';
 
-  // --- Buy Me A Coffee Logic ---
-  const paypalUsername = 'AxelLab427'; // Update this later
-  const donationAmounts = [1, 3, 5, 10];
-  
+  // Buy Me a Coffee & Bitcoin configuration
+  const bmacUsername = 'axelbase';
+  const bitcoinAddress = 'bc1q3p0e6vt492m4w4fpz5m2cl4zcfuqqkgaj6myc9';
+
   let isDropdownOpen = false;
-  
+
   function toggleDropdown() {
     isDropdownOpen = !isDropdownOpen;
   }
-  
+
   function closeDropdown() {
     isDropdownOpen = false;
   }
-  
+
   function clickOutside(node: HTMLElement) {
     const handleClick = (event: MouseEvent) => {
       if (node && !node.contains(event.target as Node)) {
@@ -30,6 +30,8 @@
       }
     };
   }
+
+  const currentYear = new Date().getFullYear();
 </script>
 
 <header class="navbar-fixed">
@@ -42,26 +44,71 @@
     </div>
 
     <div class="nav-right">
-      
-      <div class="bmac-wrapper" use:clickOutside on:click_outside={closeDropdown}>
-        <button class="btn-bmac" on:click={toggleDropdown}>
-          <i class="bi bi-cup-hot-fill"></i> 
-          <span class="d-none d-md-inline ms-1">Buy me a coffee</span>
+      <!-- Buy Me a Coffee + Bitcoin Dropdown -->
+      <div class="bmac-wrapper position-relative" use:clickOutside on:click_outside={closeDropdown}>
+        <button
+          class="btn-bmac d-flex align-items-center gap-2"
+          on:click={toggleDropdown}
+          aria-label="Support the project"
+        >
+          <i class="bi bi-cup-hot-fill"></i>
+          <span class="d-none d-md-inline">Buy me a coffee</span>
         </button>
 
         {#if isDropdownOpen}
-          <div class="bmac-dropdown" transition:fly={{ y: -10, duration: 200 }}>
-            {#each donationAmounts as amount}
-              <a
-                href="https://paypal.me/{paypalUsername}/{amount}"
-                target="_blank"
-                rel="noopener noreferrer"
-                on:click={closeDropdown}
-                class="bmac-item"
-              >
-                ${amount}
-              </a>
-            {/each}
+          <div
+            class="bmac-dropdown"
+            transition:fly={{ y: -10, duration: 220 }}
+          >
+            <a
+              href="https://buymeacoffee.com/{bmacUsername}"
+              target="_blank"
+              rel="noopener noreferrer"
+              on:click={closeDropdown}
+              class="bmac-item amount-item"
+            >
+              <span class="amount">$3</span> One Coffee
+            </a>
+
+            <a
+              href="https://buymeacoffee.com/{bmacUsername}"
+              target="_blank"
+              rel="noopener noreferrer"
+              on:click={closeDropdown}
+              class="bmac-item amount-item"
+            >
+              <span class="amount">$5</span> Two Coffees
+            </a>
+
+            <a
+              href="https://buymeacoffee.com/{bmacUsername}"
+              target="_blank"
+              rel="noopener noreferrer"
+              on:click={closeDropdown}
+              class="bmac-item amount-item"
+            >
+              <span class="amount">$10</span> Three Coffees
+            </a>
+
+            <a
+              href="https://buymeacoffee.com/{bmacUsername}"
+              target="_blank"
+              rel="noopener noreferrer"
+              on:click={closeDropdown}
+              class="bmac-item custom-amount"
+            >
+              Custom Amount
+            </a>
+
+            <a
+              href="bitcoin:{bitcoinAddress}?label=AxelBase&message=Buy%20me%20a%20coffee"
+              target="_blank"
+              rel="noopener noreferrer"
+              on:click={closeDropdown}
+              class="bmac-item custom-amount crypto-item"
+            >
+              Buy via Crypto (Bitcoin)
+            </a>
           </div>
         {/if}
       </div>
@@ -73,7 +120,6 @@
         <li><a href="{base}/#faq">FAQ</a></li>
         <li><a href="{base}/blog">Blog</a></li>
       </ul>
-
     </div>
   </nav>
 </header>
@@ -83,7 +129,7 @@
 <footer class="footer-fixed">
   <div class="container d-flex justify-content-between align-items-center">
     <span class="copyright">
-      &copy; {new Date().getFullYear()} AxelBase Invisible Character Scanner
+      © {currentYear} AxelBase Invisible Character Scanner
     </span>
     <div class="footer-links">
       <a href="{base}/privacy">Privacy</a>
@@ -94,7 +140,7 @@
 </footer>
 
 <style>
-  /* --- Navbar Styling --- */
+  /* ── Original File 2 navbar & footer styles (kept intact) ── */
   .navbar-fixed {
     position: fixed;
     top: 0;
@@ -165,61 +211,6 @@
     text-shadow: 0 0 10px rgba(255,255,255,0.5);
   }
 
-  /* --- BMAC Button & Dropdown --- */
-  .bmac-wrapper {
-    position: relative;
-  }
-
-  .btn-bmac {
-    background: #FFDD00;
-    color: #000;
-    border: none;
-    border-radius: 50px;
-    padding: 0.4rem 1rem;
-    font-size: 0.9rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  }
-
-  .btn-bmac:hover {
-    transform: scale(1.05);
-    background: #ffe652;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-  }
-
-  .bmac-dropdown {
-    position: absolute;
-    top: 120%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    overflow: hidden;
-    min-width: 80px;
-    display: flex;
-    flex-direction: column;
-    z-index: 1050;
-  }
-
-  .bmac-item {
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    color: var(--color-primary);
-    font-weight: 600;
-    text-align: center;
-    transition: background 0.2s;
-  }
-
-  .bmac-item:hover {
-    background-color: #f5ebf2;
-  }
-
-  /* --- Footer Styling --- */
   .footer-fixed {
     position: relative;
     bottom: 0;
@@ -242,8 +233,94 @@
   .footer-links a:hover { color: white; }
   .sep { margin: 0 0.5rem; color: rgba(255,255,255,0.4); }
 
-  /* Mobile Menu Adjustment */
+  /* ── Enhanced Buy Me a Coffee (inspired by File 1, adapted to File 2 theme) ── */
+  .btn-bmac {
+    background: #FFDD00;
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    padding: 0.48rem 1.15rem;
+    font-size: 0.92rem;
+    font-weight: 700;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+
+  .btn-bmac:hover {
+    transform: scale(1.06);
+    background: #ffe652;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.22);
+  }
+
+  .bmac-dropdown {
+    position: absolute;
+    top: 115%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 245px;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(109, 63, 91, 0.14);
+    box-shadow: 0 14px 38px rgba(109, 63, 91, 0.26),
+                0 10px 20px rgba(109, 63, 91, 0.18);
+    z-index: 1050;
+  }
+
+  .bmac-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.97rem;
+    font-weight: 500;
+    transition: all 0.22s ease;
+  }
+
+  .bmac-item:hover {
+    background: var(--color-accent);
+    color: var(--color-primary-dark);
+    padding-left: 26px;
+  }
+
+  .amount {
+    font-weight: 800;
+    color: #FFDD00;
+    background: #222;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 1.08rem;
+    min-width: 46px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  }
+
+  .custom-amount {
+    font-weight: 700;
+    color: var(--color-primary);
+    border-top: 1px solid #eee;
+    justify-content: center !important;
+    padding: 14px 20px !important;
+    background: rgba(109, 63, 91, 0.04);
+  }
+
+  .custom-amount:hover {
+    background: rgba(109, 63, 91, 0.12);
+  }
+
+  .crypto-item {
+    color: #f7931a;
+    font-weight: 650;
+  }
+
+  .crypto-item:hover {
+    background: #fff9f0;
+    color: #e07b00;
+  }
+
   @media (max-width: 992px) {
-    .nav-links { display: none; } /* Simple hide for mobile, or implement hamburger if needed */
+    .nav-links { display: none; }
   }
 </style>
